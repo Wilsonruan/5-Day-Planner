@@ -8,40 +8,49 @@ var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
 
 if (arrayDayPlanner === null) {
     arrayDayPlanner = ["", "", "", "", "", "", "", ""];
-  }
+}
 
-for (var i = 9; i < 18; i++) {
-    var timeBlocksInside = timeBlocks.appendChild(document.createElement('form'));
-    timeBlocksInside.setAttribute('id',i-9)
-    timeBlocksInside.setAttribute('method',"POST")
-    timeBlocksInside.classList.add('container','d-flex', 'justify-content-center');
-    var timeBox = timeBlocksInside.appendChild(document.createElement('label'));
-    timeBox.appendChild(document.createElement('br'));
-    timeBox.appendChild(document.createElement('p'));
-    timeBlocksInside.appendChild(document.createElement('textarea'));
-    timeBlocksInside.appendChild(document.createElement("button"));
-    timeBlocksInside.children[0].classList.add('hour', 'col-2', 'col-sm-1');
-    timeBlocksInside.children[0].children[1].textContent = hours[i-9];
-    timeBlocksInside.children[1].classList.add('row', 'col-8', 'col-sm-10');
-    timeBlocksInside.children[1].textContent = arrayDayPlanner[i-9]
-    timeBlocksInside.children[2].classList.add('saveBtn', 'col-2', 'col-sm-1');
-    timeBlocksInside.children[2].textContent = "Save";
+for (var i = 0; i < 9; i++) {
+    $('#time-block').append('<form method="POST" class="container d-flex justify-content-center"> <label class="hour col-2 col-sm-1"> <br> <p>' + hours[i] + '</p> </label> <textarea id="' + i + '" class="row col-8 col-sm-10"></textarea> <button class="saveBtn col-2 col-sm-1">Save</button> </form>')
+    // var timeBlocksInside = timeBlocks.appendChild(document.createElement('form'));
+    // timeBlocksInside.setAttribute('id',i)
+    // timeBlocksInside.setAttribute('method',"POST")
+    // timeBlocksInside.classList.add('container','d-flex', 'justify-content-center');
+    // var timeBox = timeBlocksInside.appendChild(document.createElement('label'));
+    // timeBox.appendChild(document.createElement('br'));
+    // timeBox.appendChild(document.createElement('p'));
+    // timeBlocksInside.appendChild(document.createElement('textarea'));
+    // timeBlocksInside.appendChild(document.createElement("button"));
+    // timeBlocksInside.children[0].classList.add('hour', 'col-2', 'col-sm-1');
+    // timeBlocksInside.children[0].children[1].textContent = hours[i];
+    // timeBlocksInside.children[1].classList.add('row', 'col-8', 'col-sm-10');
+    // timeBlocksInside.children[1].textContent = arrayDayPlanner[i]
+    // timeBlocksInside.children[2].classList.add('saveBtn', 'col-2', 'col-sm-1');
+    // timeBlocksInside.children[2].textContent = "Save";
 
-    if (i == currentTime) {
-        timeBlocksInside.children[1].classList.add('present')
-    } else if (currentTime < i) {
-        timeBlocksInside.children[1].classList.add('future')
+    // if (i + 9 == currentTime) {
+    //     timeBlocksInside.children[1].classList.add('present')
+    // } else if (currentTime < i + 9) {
+    //     timeBlocksInside.children[1].classList.add('future')
+    // } else {
+    //     timeBlocksInside.children[1].classList.add('past')
+    // }
+
+    if (i + 9 == currentTime) {
+        $('#'+ i).addClass('present')
+    } else if (currentTime < i + 9) {
+        $('#'+ i).addClass('future')
     } else {
-        timeBlocksInside.children[1].classList.add('past')
+        $('#'+ i).addClass('past')
     }
 }
 
-timeBlocks.addEventListener("click", function(event) {
+timeBlocks.addEventListener("click", function (event) {
     event.preventDefault();
     response = timeBlocks.children[event.target.parentElement.id].children[1].value;
     console.log(arrayDayPlanner);
     arrayDayPlanner[event.target.parentElement.id] = response;
     var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
     localStorage.setItem("arrayDayPlanner", JSONReadyUsers);
-    });
+});
 
