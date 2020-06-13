@@ -3,8 +3,7 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 document.getElementById('currentDay').textContent = days[new Date().getDay()] + ", " + new Date().getDate() + " " + months[new Date().getMonth()] + ", " + new Date().getFullYear();
-// var currentTime = new Date().getHours();
-var currentTime = 15
+var currentTime = new Date().getHours();
 var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
 
 if (arrayDayPlanner === null) {
