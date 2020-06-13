@@ -5,12 +5,15 @@ var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 document.getElementById('currentDay').textContent = days[new Date().getDay()] + ", " + new Date().getDate() + " " + months[new Date().getMonth()] + ", " + new Date().getFullYear();
 // var currentTime = new Date().getHours();
 var currentTime = 13
-var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
+// var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
+var arrayDayPlanner = ["", "", "", "", "", "", "", ""]
 
 for (var i = 9; i < 18; i++) {
-    var timeBlocksInside = timeBlocks.appendChild(document.createElement('div'));
+    var timeBlocksInside = timeBlocks.appendChild(document.createElement('form'));
+    timeBlocksInside.setAttribute('id',i-9)
+    timeBlocksInside.setAttribute('method',"POST")
     timeBlocksInside.classList.add('container','d-flex', 'justify-content-center');
-    timeBlocksInside.appendChild(document.createElement('p'));
+    timeBlocksInside.appendChild(document.createElement('label'));
     timeBlocksInside.appendChild(document.createElement('textarea'));
     timeBlocksInside.appendChild(document.createElement("button"));
     timeBlocksInside.children[0].classList.add('hour', 'col-2', 'col-sm-1');
@@ -27,4 +30,11 @@ for (var i = 9; i < 18; i++) {
         timeBlocksInside.children[1].classList.add('past')
     }
 }
+
+timeBlocks.addEventListener("click", function(event) {
+    event.preventDefault();
+    response = timeBlocks.children[event.target.parentElement.id].children[1].value;
+    console.log(arrayDayPlanner);
+    arrayDayPlanner[event.target.parentElement.id] = response;
+    });
 
