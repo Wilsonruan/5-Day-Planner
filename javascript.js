@@ -4,9 +4,12 @@ var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 document.getElementById('currentDay').textContent = days[new Date().getDay()] + ", " + new Date().getDate() + " " + months[new Date().getMonth()] + ", " + new Date().getFullYear();
 // var currentTime = new Date().getHours();
-var currentTime = 13
-// var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
-var arrayDayPlanner = ["", "", "", "", "", "", "", ""]
+var currentTime = 15
+var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
+
+if (arrayDayPlanner === null) {
+    arrayDayPlanner = ["", "", "", "", "", "", "", ""];
+  }
 
 for (var i = 9; i < 18; i++) {
     var timeBlocksInside = timeBlocks.appendChild(document.createElement('form'));
@@ -19,6 +22,7 @@ for (var i = 9; i < 18; i++) {
     timeBlocksInside.children[0].classList.add('hour', 'col-2', 'col-sm-1');
     timeBlocksInside.children[0].textContent = hours[i-9];
     timeBlocksInside.children[1].classList.add('row', 'col-8', 'col-sm-10');
+    timeBlocksInside.children[1].textContent = arrayDayPlanner[i-9]
     timeBlocksInside.children[2].classList.add('saveBtn', 'col-2', 'col-sm-1');
     timeBlocksInside.children[2].textContent = "Save";
 
@@ -36,5 +40,7 @@ timeBlocks.addEventListener("click", function(event) {
     response = timeBlocks.children[event.target.parentElement.id].children[1].value;
     console.log(arrayDayPlanner);
     arrayDayPlanner[event.target.parentElement.id] = response;
+    var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
+    localStorage.setItem("arrayDayPlanner", JSONReadyUsers);
     });
 
