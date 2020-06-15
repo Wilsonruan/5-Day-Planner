@@ -6,7 +6,7 @@ var currentTime = new Date().getHours();
 var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
 
 if (arrayDayPlanner === null) {
-    arrayDayPlanner = ["", "", "", "", "", "", "", ""];
+    arrayDayPlanner = ["", "", "", "", "", "", "", "",""];
 }
 
 for (var i = 0; i < 9; i++) {
