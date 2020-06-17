@@ -1,10 +1,10 @@
-var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
+var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 $('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
 var currentTime = new Date().getHours();
 var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
 
 if (arrayDayPlanner === null) {
-    arrayDayPlanner = ["", "", "", "", "", "", "", "",""];
+    arrayDayPlanner = ["", "", "", "", "", "", "", "", ""];
 }
 
 for (var i = 0; i < arrayDayPlanner.length; i++) {
@@ -22,7 +22,7 @@ for (var i = 0; i < arrayDayPlanner.length; i++) {
     }
 }
 
-$('#time-block').on("click", function (event) {
+$('#time-block').click(function (event) {
     response = $('#textarea'+ event.target.id).val();
     arrayDayPlanner[event.target.id] = response;
     var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
