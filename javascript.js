@@ -13,7 +13,7 @@ for (var i = 0; i < arrayDayPlanner.length; i++) {
     $('div').append('<form id="form' + i + '" method="POST" class="container d-flex justify-content-center"> </form>');
     $('#form' + i).append('<label class="hour col-3 col-lg-1 text-left"> <br> <p>' + hours[i] + '</p> </label>');
     $('#form' + i).append('<textarea id="textarea' + i + '" class="row col-7 col-lg-10">' + arrayDayPlanner[i] + '</textarea>');
-    $('#form' + i).append('<button id="' + i + '" class="saveBtn col-2 col-lg-1">Save</button>');
+    $('#form' + i).append('<button id="' + i + '" class="saveBtn col-2 col-lg-1"><i class="fa fa-save"></button>');
 
     if (i + 9 == currentTime) {
         $('#textarea'+ i).addClass('present')
