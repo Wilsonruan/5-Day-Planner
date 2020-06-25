@@ -16,7 +16,7 @@ Red represents the current time.
 
 Green represents the future time. 
 
-![](./images/day-planner-page.jpg)
+![](./assets/images/day-planner-page.jpg)
 
 # Header 
 
