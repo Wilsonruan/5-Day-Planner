@@ -1,6 +1,5 @@
 var hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 $('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
-// var currentTime = new Date().getHours();
 var currentTime = moment().get('hour');
 console.log(currentTime)
 var arrayDayPlanner = JSON.parse(localStorage.getItem("arrayDayPlanner"));
