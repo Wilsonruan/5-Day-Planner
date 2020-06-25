@@ -24,9 +24,12 @@ for (var i = 0; i < arrayDayPlanner.length; i++) {
     }
 }
 
-$('button').click(function (event) {
+$('button').on("click", function (event) {
+    event.preventDefault();
     response = $('#textarea'+ event.target.id).val();
     arrayDayPlanner[event.target.id] = response;
     var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
     localStorage.setItem("arrayDayPlanner", JSONReadyUsers);
 });
+
+
