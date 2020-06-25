@@ -24,7 +24,7 @@ for (var i = 0; i < arrayDayPlanner.length; i++) {
     }
 }
 
-$('button').on("click", function (event) {
+$('button').click(function (event) {
     event.preventDefault();
     response = $('#textarea'+ event.target.id).val();
     arrayDayPlanner[event.target.id] = response;
