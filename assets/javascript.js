@@ -10,20 +10,19 @@ if (arrayDayPlanner === null) {
 for (var i = 0; i < arrayDayPlanner.length; i++) {
 
     var formInput = $('<form>').attr("id", "form" + i).addClass('container d-flex justify-content-center')
-    $('div').append(formInput)
 
     var labelInput = $('<label>').addClass('hour col-3 col-lg-1 text-left')
-    $('#form' + i).append(labelInput)
     $(labelInput).append('<br>', '<p>')
     $(labelInput.children('p')).text(hours[i])
     
     var textInput = $('<textarea>').attr("id", "textarea" + i).addClass("row col-7 col-lg-10").text(arrayDayPlanner[i])
-    $('#form' + i).append(textInput)
 
     var buttonInput = $('<button>').attr('id', i).addClass('saveBtn col-2 col-lg-1')
-    $('#form' + i).append(buttonInput)
     $(buttonInput).append('<i>')
     $(buttonInput.children()).addClass('fa fa-save')
+
+    $('div').append(formInput)
+    $('#form' + i).append(labelInput, textInput, buttonInput)
 
     if (i + 9 == currentTime) {
         $('#textarea' + i).addClass('present')
