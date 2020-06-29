@@ -37,8 +37,8 @@ $('button').click(function (event) {
     event.preventDefault();
     response = $('#textarea' + event.target.id).val();
     arrayDayPlanner[event.target.id] = response;
-    var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
-    localStorage.setItem("arrayDayPlanner", JSONReadyUsers);
 });
 
+var JSONReadyUsers = JSON.stringify(arrayDayPlanner);
+localStorage.setItem("arrayDayPlanner", JSONReadyUsers);
 
